@@ -267,15 +267,15 @@ class Window(QMainWindow, Ui_MainWindow):
         save_path = self.edit_xl_save_path.text().strip()
         text_list = []
         if save_path:
-            if not Path(save_path).exists():
-                Path(save_path).mkdir(parents=True)
+            # if not Path(save_path).exists():
+            #     Path(save_path).mkdir(parents=True)
             for text, filename, lang in data:
                 if not lang: lang = self.lang
                 text_list.append([text, str(Path(save_path) / filename), lang])
         else:
             text_list = data
 
-        self.tts_from_list(data)
+        self.tts_from_list(text_list)
         QMessageBox.information(self, '信息', '成功生成语音！')
 
     def comb_lang_text_activated(self, text):
